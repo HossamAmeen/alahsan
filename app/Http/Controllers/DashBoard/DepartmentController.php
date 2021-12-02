@@ -1,12 +1,12 @@
 <?php
 
-namespace {{ namespace }};
+namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\APIResponseTrait;
-use {{ rootNamespace }}Http\Controllers\Controller;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\{Team};
 
-class {{ class }} extends CRUDController
+class DepartmentController extends CRUDController
 {
      use APIResponseTrait;
     public function __construct(Team $model)
