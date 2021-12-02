@@ -34,7 +34,9 @@ class HomeController extends Controller
         $data = Article::get(['id','title' , 'description' ,'image']);
         else
         $data = Article::find($id);
-
+        if(!isset($data)){
+            return $this->APIResponse(null, null, 404);
+        }
         return $this->APIResponse($data, null, 200);
     }
     public function departments()
