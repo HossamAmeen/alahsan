@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use App\Models\{User};
+use App\Models\{User,Configration};
 use Auth;
 class ConfingrationController extends CRUDController
 {
@@ -59,14 +59,27 @@ class ConfingrationController extends CRUDController
         }
     }
 
-    public function updateProfile($id , Request $request){
+    public function showProfile()
+    {
+        if (!Auth::guard('api')->check()) {
+            return $this->APIResponse(null, "the token is expired", 422);
+        }
+        return $this->APIResponse(Auth::guard('api')->user(), null, 200);
+    }
+    public function updateProfile(Request $request){
         
         // if (isset($request->validator) && $request->validator->fails())
         // {
         //     return $this->APIResponse(null , $request->validator->messages() ,  422);
         // }
-    
-        $row = $this->model->Find($id);
+        if (Auth::guard('api')->check()) {
+            $row = $this->model->Find(Auth::guard('api')->user()->id);
+        }
+        else
+        {
+            return $this->APIResponse(null, "the token is expired", 422);
+        }
+       
         if(!isset($row)){
             return $this->APIResponse(null, "this item not found or deleted", 404);
         }
@@ -98,5 +111,18 @@ class ConfingrationController extends CRUDController
         {
             return $this->APIResponse(null, "the token is expired", 422);
         }
+    }
+
+    public function getConfigration()
+    {
+        $configration = Configration::find(1);
+        return $this->APIResponse($configration, null, 200);
+    }
+
+    public function updateConfigration(Request $request)
+    {
+        $configration = Configration::find(1);
+        $configration->update($request->all());
+        return $this->APIResponse(null, null, 200);
     }
 }

@@ -10,9 +10,9 @@ class Course extends Model
      protected $fillable = [
         'title' , 'description', 'en_title' , 'en_description', 'image' , "user_id"
     ];
-     protected $hidden = [
-         'user_id',"created_at" , 'updated_at','deleted_at' 
-    ];
+    protected $hidden = [
+        'user_id',"created_at" ,'en_title','en_description' ,'updated_at','deleted_at' 
+   ];
     public function user(){
         return $this->belongsTo(User::class);
     }

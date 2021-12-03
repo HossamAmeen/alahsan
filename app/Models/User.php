@@ -24,18 +24,18 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token', 'user_id',"created_at" ,'updated_at','deleted_at' 
     ];
     public function getImageAttribute()
     {
         
-        if($this->attributes['image'] != null && file_exists(($this->attributes['image'])) ){
-            return asset($this->attributes['image']);
-        }
-        else
-        {
-            return asset('assets/img/avatars/avatar-1.jpg');
-        }
+        // if($this->attributes['image'] != null && file_exists(($this->attributes['image'])) ){
+        //     return asset($this->attributes['image']);
+        // }
+        // else
+        // {
+        //     return asset('assets/img/avatars/avatar-1.jpg');
+        // }
     }
     /**
      * The attributes that should be cast to native types.

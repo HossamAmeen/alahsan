@@ -12,7 +12,14 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('cors')->group(function () {
                 ///////////////////// admin
         Route::prefix('admin')->namespace('DashBoard')->group(function(){
-                Route::post('/login', 'ConfingrationController@login')->name('admin.login');
+                        /////////////////// profile ///////////////////
+                Route::post('/login', 'ConfingrationController@login');
+                Route::get('/profile', 'ConfingrationController@showProfile');
+                Route::put('/update-profile', 'ConfingrationController@updateProfile');
+                        ////////////////// configration ///////////////////
+                Route::get('/configration', 'ConfingrationController@getConfigration'); 
+                Route::put('/update-configration', 'ConfingrationController@UpdateConfigration');    
+                        //////////////////////////////////////////////////
                 Route::middleware('checkLogin')->group(function () {
                         Route::post('/logout', 'ConfingrationController@logout')->name('admin.logout');
                 });
