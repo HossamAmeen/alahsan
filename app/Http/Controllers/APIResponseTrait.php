@@ -10,7 +10,7 @@ trait APIResponseTrait
         $array = [
             'data' => $data ,
             'status' => in_array($code , [200 , 201 , 202]) ? "success" : "falied" ,
-            'error' => (string) $error,
+            'error' => $error,
         ];
 
         return response($array , $code);

@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard;
+namespace App\Http\Controllers\DashBoard;
 use App\Http\Controllers\APIResponseTrait;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\{Department};
+use App\Models\{Article};
 
-class DepartmentController extends CRUDController
+class ArticleController extends CRUDController
 {
      use APIResponseTrait;
-    public function __construct(Department $model)
+    public function __construct(Article $model)
     {
         $this->model = $model;
     }

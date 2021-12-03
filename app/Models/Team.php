@@ -8,7 +8,7 @@ class Team extends Model
 {
      use SoftDeletes;
      protected $fillable = [
-        'title' , 'description', 'en_title' , 'en_description', 'image' , "user_id"
+        'name' , 'postion','image' , "user_id"
     ];
      protected $hidden = [
          'user_id',"created_at" , 'updated_at','deleted_at' 

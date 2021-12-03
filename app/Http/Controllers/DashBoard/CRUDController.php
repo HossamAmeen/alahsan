@@ -87,7 +87,10 @@ class CRUDController extends Controller
         //     return $this->APIResponse(null , $request->validator->messages() ,  422);
         // }
     
-        $row = $this->model->FindOrFail($id);
+        $row = $this->model->Find($id);
+        if(!isset($row)){
+            return $this->APIResponse(null, "this item not found or deleted", 404);
+        }
         $requestArray = $request->all();
         if(isset($requestArray['password']) && $requestArray['password'] != ""){
             $requestArray['password'] =  Hash::make($requestArray['password']);
@@ -108,8 +111,10 @@ class CRUDController extends Controller
     public function destroy($id)
     {
 
-        $row = $this->model->FindOrFail($id);
-
+        $row = $this->model->Find($id);
+        if(!isset($row)){
+            return $this->APIResponse(null, "this item not found or deleted", 404);
+        }
         if(isset($row->file) && is_file(asset($row->file)))
         {
             // unlink(asset($row->file));
