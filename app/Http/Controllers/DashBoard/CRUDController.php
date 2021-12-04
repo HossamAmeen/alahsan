@@ -38,10 +38,13 @@ class CRUDController extends Controller
         // }
 
         $requestArray = $request->all();
+        // return $request->all() ;
         if(isset($requestArray['password']) )
         $requestArray['password'] =  Hash::make($requestArray['password']);
+       
         if(isset($requestArray['image']) )
         {
+            // return "TesT";
             $fileName = $this->storeFile($request->image  );
             $requestArray['image'] =  $fileName;
         }
@@ -165,20 +168,21 @@ class CRUDController extends Controller
         $name = time().'.'.$file->getClientOriginalExtension();
         $file->move($path, $name);
 
-        return $path .'/'. $name;
+        return asset($path .'/'. $name);
     }
     public function uploadFile(Request $request)
     {
-        $file = $request->file; 
-        $path = public_html().'/'.date("Y-m-d");
+        $path = 'uploads/'.$folderName.'/'.date("Y-m-d");
+        $path = 'uploads/'.date("Y-m-d");
         if(!File::isDirectory($path))
         {
             File::makeDirectory($path, 0777, true, true);
         }
+        $file = $request->image;
         $name = time().'.'.$file->getClientOriginalExtension();
         $file->move($path, $name);
-
-        return $path .'/'. $name;
+        return $this->APIResponse(['path'=>asset($path .'/'. $name)], null, 200);
+        return asset($path .'/'. $name);
     }
 
 }

@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\{User,Configration};
-use Auth;
+use Auth ,File;
+
 class ConfingrationController extends CRUDController
 {
      use APIResponseTrait;
@@ -124,5 +125,20 @@ class ConfingrationController extends CRUDController
         $configration = Configration::find(1);
         $configration->update($request->all());
         return $this->APIResponse(null, null, 200);
+    }
+
+    public function uploadFile(Request $request)
+    {
+        // $path = 'uploads/'.$folderName.'/'.date("Y-m-d");
+        $path = 'uploads/'.date("Y-m-d");
+        if(!File::isDirectory($path))
+        {
+            File::makeDirectory($path, 0777, true, true);
+        }
+        $file = $request->image;
+        $name = time().'.'.$file->getClientOriginalExtension();
+        $file->move($path, $name);
+        return $this->APIResponse(['path'=>asset($path .'/'. $name)], null, 200);
+        return asset($path .'/'. $name);
     }
 }

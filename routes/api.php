@@ -18,7 +18,8 @@ Route::middleware('cors')->group(function () {
                 Route::put('/update-profile', 'ConfingrationController@updateProfile');
                         ////////////////// configration ///////////////////
                 Route::get('/configration', 'ConfingrationController@getConfigration'); 
-                Route::put('/update-configration', 'ConfingrationController@UpdateConfigration');    
+                Route::put('/update-configration', 'ConfingrationController@UpdateConfigration');   
+                Route::post('upload-file', 'ConfingrationController@uploadFile'); 
                         //////////////////////////////////////////////////
                 Route::middleware('checkLogin')->group(function () {
                         Route::post('/logout', 'ConfingrationController@logout')->name('admin.logout');
