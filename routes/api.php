@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::middleware('cors')->group(function () {
-        
                 ///////////////////// admin
         Route::prefix('admin')->namespace('DashBoard')->group(function(){
                         /////////////////// profile ///////////////////
@@ -42,7 +41,6 @@ Route::middleware('cors')->group(function () {
                 Route::get('departments', 'HomeController@departments');
                 Route::get('events', 'HomeController@events');
                 Route::get('home', 'HomeController@home');
-
 });
 
 
