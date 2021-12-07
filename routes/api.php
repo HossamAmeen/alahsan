@@ -28,8 +28,8 @@ Route::middleware('cors')->group(function () {
                 Route::resource('teams' , "TeamController");
                 Route::resource('courses' , "CourseController");
                 Route::resource('articles' , "ArticleController");
-                Route::resource('departments' , "DepartmentController");
-                Route::resource('events' , "EventController");
+                Route::resource('departments' , "DepartmentsController");
+                Route::resource('events' , "EventsController");
                 Route::resource('complaints' , "ComplaintController");
                
         });

@@ -20,7 +20,7 @@ class CreateCoursesTable extends Migration
             $table->text('en_title')->nullable();
             $table->text('en_description')->nullable();
             
-            $table->string('image')->default('images/courses.png');
+            $table->string('image')->default(asset('images/courses.png'));
 
             $table->bigInteger('user_id')->unsigned()->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');

@@ -20,7 +20,7 @@ class CreateDepartmentsTable extends Migration
             $table->text('en_title')->nullable();
             $table->text('en_description')->nullable();
             
-            $table->string('image')->default('images/department-photo.png');
+            $table->string('image')->default(asset('images/department-photo.png'));
 
             $table->bigInteger('user_id')->unsigned()->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
