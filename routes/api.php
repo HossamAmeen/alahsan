@@ -14,8 +14,8 @@ Route::middleware('cors')->group(function () {
         Route::prefix('admin')->namespace('DashBoard')->group(function(){
                         /////////////////// profile ///////////////////
                 Route::post('/login', 'ConfingrationController@login');
-                Route::get('/profile', 'ConfingrationController@showProfile');
-                Route::put('/update-profile', 'ConfingrationController@updateProfile');
+                Route::get('/profile/{id?}', 'ConfingrationController@showProfile');
+                Route::put('/update-profile/{id?}', 'ConfingrationController@updateProfile');
                         ////////////////// configration ///////////////////
                 Route::get('/configration', 'ConfingrationController@getConfigration'); 
                 Route::put('/update-configration', 'ConfingrationController@UpdateConfigration');   

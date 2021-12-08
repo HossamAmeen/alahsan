@@ -51,6 +51,7 @@ class ConfingrationController extends CRUDController
             
                 $success['token'] = $user->createToken('token')->accessToken;
                 $success['user_name'] = $user->user_name;
+                $success['user_id'] = $user->id;
                 return $this->APIResponse($success, null, 200);
             } else {
                 return $this->APIResponse(null, "كلمة المرور غير مطابقة", 422);  
@@ -60,29 +61,34 @@ class ConfingrationController extends CRUDController
         }
     }
 
-    public function showProfile()
+    public function showProfile($id=null)
     {
-        if (!Auth::guard('api')->check()) {
-            return $this->APIResponse(null, "the token is expired", 422);
+        // if (!Auth::guard('api')->check()) {
+        //     return $this->APIResponse(null, "the token is expired", 422);
+        // }
+        // return $this->APIResponse(Auth::guard('api')->user(), null, 200);
+        $user = User::find($id);
+        if(isset($user)){
+            return $this->APIResponse($user, null, 200);
         }
-        return $this->APIResponse(Auth::guard('api')->user(), null, 200);
+        return $this->APIResponse(null, "this account not found", 404);
     }
-    public function updateProfile(Request $request){
+    public function updateProfile(Request $request , $id = null){
         
         // if (isset($request->validator) && $request->validator->fails())
         // {
         //     return $this->APIResponse(null , $request->validator->messages() ,  422);
         // }
-        if (Auth::guard('api')->check()) {
-            $row = $this->model->Find(Auth::guard('api')->user()->id);
-        }
-        else
-        {
-            return $this->APIResponse(null, "the token is expired", 422);
-        }
-       
+        // if (Auth::guard('api')->check()) {
+        //     $row = $this->model->Find(Auth::guard('api')->user()->id);
+        // }
+        // else
+        // {
+        //     return $this->APIResponse(null, "the token is expired", 422);
+        // }
+       $row=User::Find($id);
         if(!isset($row)){
-            return $this->APIResponse(null, "this item not found or deleted", 404);
+            return $this->APIResponse(null, "this account not found or deleted", 404);
         }
         $requestArray = $request->all();
         if(isset($requestArray['password']) && $requestArray['password'] != ""){
@@ -90,11 +96,11 @@ class ConfingrationController extends CRUDController
         }else{
             unset($requestArray['password']);
         }
-        if(isset($requestArray['image']) )
-        {
-            $fileName = $this->storeFile($request->image  );
-            $requestArray['image'] =  $fileName;
-        }
+        // if(isset($requestArray['image']) )
+        // {
+        //     $fileName = $this->storeFile($request->image  );
+        //     $requestArray['image'] =  $fileName;
+        // }
         
         // $requestArray['user_id'] = Auth::user()->id;
         $row->update($requestArray);
@@ -104,14 +110,15 @@ class ConfingrationController extends CRUDController
 
     public function logout()
     { 
-        if (Auth::guard('api')->check()) {
-            Auth::guard('api')->user()->AauthAcessToken()->delete();
-            return $this->APIResponse(null, null, 200);
-        }
-        else
-        {
-            return $this->APIResponse(null, "the token is expired", 422);
-        }
+        // if (Auth::guard('api')->check()) {
+        //     Auth::guard('api')->user()->AauthAcessToken()->delete();
+        //     return $this->APIResponse(null, null, 200);
+        // }
+        // else
+        // {
+        //     return $this->APIResponse(null, "the token is expired", 422);
+        // }
+        return $this->APIResponse(null, null, 200);
     }
 
     public function getConfigration()
