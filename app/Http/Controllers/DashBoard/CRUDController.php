@@ -168,7 +168,7 @@ class CRUDController extends Controller
         $name = time().'.'.$file->getClientOriginalExtension();
         $file->move($path, $name);
 
-        return asset($path .'/'. $name);
+        return $path .'/'. $name;
     }
     public function uploadFile(Request $request)
     {
@@ -182,7 +182,7 @@ class CRUDController extends Controller
         $name = time().'.'.$file->getClientOriginalExtension();
         $file->move($path, $name);
         return $this->APIResponse(['path'=>asset($path .'/'. $name)], null, 200);
-        return asset($path .'/'. $name);
+        return $path .'/'. $name;
     }
 
 }

@@ -17,7 +17,7 @@ class CreateTeamsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('postion');
-            $table->string('image')->default(asset('images/team.png'));
+            $table->string('image')->default('images/team.png');
 
             $table->bigInteger('user_id')->unsigned()->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');

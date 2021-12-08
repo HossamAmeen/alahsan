@@ -16,4 +16,15 @@ class Team extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
+    public function getImageAttribute()
+    {
+        
+        if($this->attributes['image'] != null && file_exists(($this->attributes['image'])) ){
+            return asset($this->attributes['image']);
+        }
+        else
+        {
+            return asset('images/team.png');
+        }
+    }
 }

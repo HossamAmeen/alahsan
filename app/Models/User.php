@@ -29,13 +29,13 @@ class User extends Authenticatable
     public function getImageAttribute()
     {
         
-        // if($this->attributes['image'] != null && file_exists(($this->attributes['image'])) ){
-        //     return asset($this->attributes['image']);
-        // }
-        // else
-        // {
-        //     return asset('assets/img/avatars/avatar-1.jpg');
-        // }
+        if($this->attributes['image'] != null && file_exists(($this->attributes['image'])) ){
+            return asset($this->attributes['image']);
+        }
+        else
+        {
+            return asset('assets/img/avatars/avatar-1.jpg');
+        }
     }
     /**
      * The attributes that should be cast to native types.
