@@ -42,12 +42,12 @@ class CRUDController extends Controller
         if(isset($requestArray['password']) )
         $requestArray['password'] =  Hash::make($requestArray['password']);
        
-        if(isset($requestArray['image']) )
-        {
-            // return "TesT";
-            $fileName = $this->storeFile($request->image  );
-            $requestArray['image'] =  $fileName;
-        }
+        // if(isset($requestArray['image']) )
+        // {
+        //     // return "TesT";
+        //     $fileName = $this->storeFile($request->image  );
+        //     $requestArray['image'] =  $fileName;
+        // }
        
         // $requestArray['user_id'] = Auth::user()->id;
         $this->model->create($requestArray);
@@ -100,11 +100,11 @@ class CRUDController extends Controller
         }else{
             unset($requestArray['password']);
         }
-        if(isset($requestArray['image']) )
-        {
-            $fileName = $this->storeFile($request->image  );
-            $requestArray['image'] =  $fileName;
-        }
+        // if(isset($requestArray['image']) )
+        // {
+        //     $fileName = $this->storeFile($request->image  );
+        //     $requestArray['image'] =  $fileName;
+        // }
         
         // $requestArray['user_id'] = Auth::user()->id;
         $row->update($requestArray);
