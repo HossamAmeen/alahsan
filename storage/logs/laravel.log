@@ -16861,3 +16861,19 @@ Did you mean one of these?
 #41 F:\\xmap\\htdocs\\alahsan\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #42 {main}
 "} 
+[2021-12-09 13:58:52] local.ERROR: There are no commands defined in the "mirgate" namespace.
+
+Did you mean this?
+    migrate {"exception":"[object] (Symfony\\Component\\Console\\Exception\\NamespaceNotFoundException(code: 0): There are no commands defined in the \"mirgate\" namespace.
+
+Did you mean this?
+    migrate at F:\\xmap\\htdocs\\alahsan\\vendor\\symfony\\console\\Application.php:612)
+[stacktrace]
+#0 F:\\xmap\\htdocs\\alahsan\\vendor\\symfony\\console\\Application.php(663): Symfony\\Component\\Console\\Application->findNamespace('mirgate')
+#1 F:\\xmap\\htdocs\\alahsan\\vendor\\symfony\\console\\Application.php(255): Symfony\\Component\\Console\\Application->find('mirgate:fresh')
+#2 F:\\xmap\\htdocs\\alahsan\\vendor\\symfony\\console\\Application.php(167): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#3 F:\\xmap\\htdocs\\alahsan\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(93): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 F:\\xmap\\htdocs\\alahsan\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 F:\\xmap\\htdocs\\alahsan\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#6 {main}
+"} 

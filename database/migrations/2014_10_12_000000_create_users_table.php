@@ -28,7 +28,7 @@ class CreateUsersTable extends Migration
              *
              * 
              */
-            $table->string('image')->nullable();
+            $table->string('image')->default('https://alahsan-private-schools.com/images/team.png')->nullable();
 
             $table->bigInteger('user_id')->unsigned()->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');

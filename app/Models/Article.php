@@ -28,15 +28,15 @@ class Article extends Model
         // return substr(strip_tags($this->description), 0 ,  150 );
         return  substr( strip_tags(html_entity_decode($this->description)  ),0 , 100 );
     }
-    public function getImageAttribute()
-    {
+    // public function getImageAttribute()
+    // {
         
-        if($this->attributes['image'] != null && file_exists(($this->attributes['image'])) ){
-            return asset($this->attributes['image']);
-        }
-        else
-        {
-            return asset('images/news.jpg');
-        }
-    }
+    //     if($this->attributes['image'] != null && file_exists(($this->attributes['image'])) ){
+    //         return asset($this->attributes['image']);
+    //     }
+    //     else
+    //     {
+    //         return asset('images/news.jpg');
+    //     }
+    // }
 }

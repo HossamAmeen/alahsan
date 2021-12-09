@@ -16,15 +16,15 @@ class Department extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
-    public function getImageAttribute()
-    {
+    // public function getImageAttribute()
+    // {
         
-        if($this->attributes['image'] != null && file_exists(($this->attributes['image'])) ){
-            return asset($this->attributes['image']);
-        }
-        else
-        {
-            return asset('images/department-photo.png');
-        }
-    }
+    //     if($this->attributes['image'] != null && file_exists(($this->attributes['image'])) ){
+    //         return asset($this->attributes['image']);
+    //     }
+    //     else
+    //     {
+    //         return asset('images/department-photo.png');
+    //     }
+    // }
 }
