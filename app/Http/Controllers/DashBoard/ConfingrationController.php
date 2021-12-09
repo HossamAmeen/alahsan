@@ -32,9 +32,9 @@ class ConfingrationController extends CRUDController
 
         $field = 'phone';
 
-        if (is_numeric( request('phone'))) {
+        if (is_numeric( request('user_name'))) {
             $field = 'phone';
-        } elseif (filter_var( request('phone'), FILTER_VALIDATE_EMAIL)) {
+        } elseif (filter_var( request('user_name'), FILTER_VALIDATE_EMAIL)) {
             $field = 'email';
         }
         else
