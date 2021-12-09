@@ -24,7 +24,7 @@ Route::middleware('cors')->group(function () {
                 Route::middleware('checkLogin')->group(function () {
                         Route::post('/logout', 'ConfingrationController@logout')->name('admin.logout');
                 });
-                Route::resource('admins' , "AdminController");
+                Route::resource('admins' , "AdminsController");
                 Route::resource('teams' , "TeamController");
                 Route::resource('courses' , "CourseController");
                 Route::resource('articles' , "ArticleController");

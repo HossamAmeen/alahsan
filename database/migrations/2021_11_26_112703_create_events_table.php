@@ -18,7 +18,7 @@ class CreateEventsTable extends Migration
             $table->string('title');
             $table->text('description');
 
-            $table->string('image')->default('images/pic.png');
+            $table->string('image')->default('https://alahsan-private-schools.com/images/pic.png');
             
             $table->bigInteger('user_id')->unsigned()->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
