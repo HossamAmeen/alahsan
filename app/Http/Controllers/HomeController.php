@@ -25,13 +25,13 @@ class HomeController extends Controller
      */
     public function events()
     {
-        $data = Event::all();
+        $data = Event::orderBy('id', 'DESC')->get();
         return $this->APIResponse($data, null, 200);
     }
     public function articles($id = null )
     {
         if($id == null)
-        $data = Article::get(['id','title' , 'description' ,'image']);
+        $data = Article::orderBy('id', 'DESC')->get(['id','title' , 'description' ,'image']);
         else
         $data = Article::find($id);
         if(!isset($data)){
@@ -41,12 +41,12 @@ class HomeController extends Controller
     }
     public function departments()
     {
-        $data = Department::all();
+        $data = Department::orderBy('id', 'DESC')->get();
         return $this->APIResponse($data, null, 200);
     }
     public function courses()
     {
-        $data = Course::all();
+        $data = Course::orderBy('id', 'DESC')->get();
         return $this->APIResponse($data, null, 200);
     }
     public function home()
@@ -56,7 +56,7 @@ class HomeController extends Controller
     }
     public function teamwork()
     {
-        $data = Team::all();
+        $data = Team::orderBy('id', 'DESC')->get();
         return $this->APIResponse($data, null, 200);
     }
     public function complaint(Request $request)
