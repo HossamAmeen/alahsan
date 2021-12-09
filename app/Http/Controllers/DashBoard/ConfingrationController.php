@@ -49,7 +49,7 @@ class ConfingrationController extends CRUDController
         if ($user) {
             if (Hash::check($request->password, $user->password)) {
             
-                $success['token'] = $user->createToken('token')->accessToken;
+                // $success['token'] = $user->createToken('token')->accessToken;
                 $success['user_name'] = $user->user_name;
                 $success['user_id'] = $user->id;
                 return $this->APIResponse($success, null, 200);
